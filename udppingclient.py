@@ -19,3 +19,5 @@ for i in range(10):
         print(f"RTT: {rtt} s\n")
     except socket.timeout:
         print("Request timed out\n")
+
+clientSocket.close()
