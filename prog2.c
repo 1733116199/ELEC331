@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 /* ******************************************************************
  ALTERNATING BIT AND GO-BACK-N NETWORK EMULATOR: VERSION 1.1  J.F.Kurose
@@ -36,14 +37,76 @@ struct pkt {
 
 /********* STUDENTS WRITE THE NEXT SEVEN ROUTINES *********/
 
+#define ID_A 0
+#define ID_B 1
+#define A_TIMER 20.0
 
+#define NONE 0
+#define ACK 1
+#define NACK 2
 
+#define WAIT_TO_SEND 1
+#define WAIT_FOR_ACK 2
+
+// global variables for sender
+int A_seqnum;
+int A_state;
+struct pkt A_packet;
+
+// global variables for receiver
+int B_seqnum;
+const char zero_array[20] = {0};
+
+int calc_checksum(struct pkt packet){
+  int checksum = 0;
+  checksum += packet.seqnum;
+  checksum += packet.acknum;
+  for(int i = 0; i < 20; i++){
+    checksum += packet.payload[i];
+  }
+  return checksum;
+}
+
+struct pkt make_pkt(int seqnum, int acknum, const char payload[20]){
+  struct pkt packet;
+  packet.seqnum = seqnum;
+  packet.acknum = acknum;
+  for(int i = 0; i < 20; i++){
+    packet.payload[i] = payload[i];
+  }
+  packet.checksum = calc_checksum(packet);
+  return packet;
+}
+
+int corrupt(struct pkt packet) {
+  return packet.checksum != calc_checksum(packet);
+}
+
+int is_ack(struct pkt packet, int seqnum){
+  return (packet.seqnum == seqnum) && (packet.acknum == ACK);
+}
+
+int has_seq(struct pkt packet, int seqnum) {
+  return (packet.seqnum == seqnum);
+}
 
 /* called from layer 5, passed the data to be sent to other side */
 A_output(message)
   struct msg message;
 {
+  if(A_state == WAIT_TO_SEND){
+    // make packet
+    A_packet = make_pkt(A_seqnum, NONE, message.data);
 
+    // send data
+    tolayer3(ID_A, A_packet);
+
+    // start timer
+    starttimer(ID_A, A_TIMER);
+
+    // transition to wait for ACK state
+    A_state = WAIT_FOR_ACK;
+  }
 }
 
 B_output(message)  /* need be completed only for extra credit */
@@ -56,19 +119,38 @@ B_output(message)  /* need be completed only for extra credit */
 A_input(packet)
   struct pkt packet;
 {
+  if(A_state == WAIT_FOR_ACK){
+    if(!corrupt(packet) && is_ack(packet, A_seqnum)){
+      // stop timer
+      stoptimer(ID_A);
 
+      // transition to wait to send the next seqnum
+      A_seqnum = !A_seqnum;
+      A_state = WAIT_TO_SEND;
+    }
+  }
 }
 
 /* called when A's timer goes off */
 A_timerinterrupt()
 {
+  if(A_state == WAIT_FOR_ACK){
 
+    // if timeout, resend last packet
+    tolayer3(ID_A, A_packet);
+
+    // restart timer
+    starttimer(ID_A, A_TIMER);
+  }
 }  
 
 /* the following routine will be called once (only) before any other */
 /* entity A routines are called. You can use it to do any initialization */
 A_init()
 {
+  A_seqnum = 0;
+  A_state = WAIT_TO_SEND;
+  A_packet = make_pkt(0, NONE, zero_array);
 }
 
 
@@ -78,6 +160,15 @@ A_init()
 B_input(packet)
   struct pkt packet;
 {
+  if(!corrupt(packet) || has_seq(packet, B_seqnum)){
+    tolayer5(ID_B, packet.payload);
+    struct pkt res = make_pkt(B_seqnum, ACK, zero_array);
+    tolayer3(ID_B, res);
+    B_seqnum = !B_seqnum;
+  }else{
+    struct pkt res = make_pkt(!B_seqnum, ACK, zero_array);
+    tolayer3(ID_B, res);
+  }
 }
 
 /* called when B's timer goes off */
@@ -89,6 +180,7 @@ B_timerinterrupt()
 /* entity B routines are called. You can use it to do any initialization */
 B_init()
 {
+  B_seqnum = 0;
 }
 
 
@@ -251,7 +343,7 @@ init()                         /* initialize the simulator */
     printf("It is likely that random number generation on your machine\n" ); 
     printf("is different from what this emulator expects.  Please take\n");
     printf("a look at the routine jimsrand() in the emulator code. Sorry. \n");
-    exit();
+    exit(1);
     }
 
    ntolayer3 = 0;
@@ -283,7 +375,7 @@ generate_next_arrival()
 {
    double x,log(),ceil();
    struct event *evptr;
-    char *malloc();
+    void *malloc();
    float ttime;
    int tempint;
 
@@ -394,7 +486,7 @@ float increment;
 
  struct event *q;
  struct event *evptr;
- char *malloc();
+ void *malloc();
 
  if (TRACE>2)
     printf("          START TIMER: starting timer at %f\n",time);
@@ -422,7 +514,7 @@ struct pkt packet;
 {
  struct pkt *mypktptr;
  struct event *evptr,*q;
- char *malloc();
+ void *malloc();
  float lastime, x, jimsrand();
  int i;
 
