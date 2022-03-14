@@ -39,7 +39,7 @@ struct pkt {
 
 #define ID_A 0
 #define ID_B 1
-#define A_TIMER 20.0
+#define A_TIMER ((double)20.0)
 
 #define NONE 0
 #define ACK 1
@@ -47,6 +47,13 @@ struct pkt {
 
 #define WAIT_TO_SEND 1
 #define WAIT_FOR_ACK 2
+
+#define START_PRINTING printf("===============\n");
+#define STOP_PRINTING printf("\n");
+#define ACKNUM_TOSTRING(N) ((N == NONE) ? "NONE" : (N == ACK ? "ACK" : "NACK"))
+#define PACKET_TOSTRING(P) "(seqnum: %d, acknum: %s, payload: '%s')\n", \
+  P.seqnum, ACKNUM_TOSTRING((P.acknum)), ((const char *)P.payload) 
+#define MESSAGE_TOSTRING(M) "(data: %s)\n", ((const char *)M.data)
 
 // global variables for sender
 int A_seqnum;
@@ -94,19 +101,26 @@ int has_seq(struct pkt packet, int seqnum) {
 A_output(message)
   struct msg message;
 {
+  START_PRINTING;
+  printf("Sender: L5 gives me " MESSAGE_TOSTRING(message));
+
   if(A_state == WAIT_TO_SEND){
-    // make packet
+
+    printf("Accepting L5's request becasue I am ready to send message\n");
     A_packet = make_pkt(A_seqnum, NONE, message.data);
 
-    // send data
+    printf("Invoking L3 with " PACKET_TOSTRING(A_packet));
     tolayer3(ID_A, A_packet);
 
-    // start timer
+    printf("Starting a timer for %.2f time units\n", A_TIMER);
     starttimer(ID_A, A_TIMER);
 
-    // transition to wait for ACK state
+    printf("Transitioning to state WAIT_FOR_ACK\n");
     A_state = WAIT_FOR_ACK;
+  }else{
+    printf("Refusing L5's request because I still haven't send " PACKET_TOSTRING(A_packet));
   }
+  STOP_PRINTING;
 }
 
 B_output(message)  /* need be completed only for extra credit */
@@ -119,29 +133,50 @@ B_output(message)  /* need be completed only for extra credit */
 A_input(packet)
   struct pkt packet;
 {
+  START_PRINTING;
+  printf("Sender: L3 gives me " PACKET_TOSTRING(packet));
   if(A_state == WAIT_FOR_ACK){
+    printf("I accept because I am waiting for receiver's acknowledgement\n");
+
     if(!corrupt(packet) && is_ack(packet, A_seqnum)){
-      // stop timer
+
+      printf("The packet is legit. Stopping timer\n");
       stoptimer(ID_A);
 
-      // transition to wait to send the next seqnum
+      printf("Transitioning to (seqnum: %d, state: WAIT_TO_SEND)\n", !A_seqnum);
       A_seqnum = !A_seqnum;
       A_state = WAIT_TO_SEND;
+    }else{
+      if(corrupt(packet)){
+        printf("The packet is corrupted. Ignoring\n");
+      }else{
+        printf("The packet is not acknowledging seqnum %d (the one I am waiting for)\n", A_seqnum);
+      }
     }
+  }else{
+    printf("I refuse because I am not waiting for receiver's acknowledgement\n");
   }
+  STOP_PRINTING;
 }
 
 /* called when A's timer goes off */
 A_timerinterrupt()
 {
+  START_PRINTING;
+  printf("Sender: there is an timer interrupt\n");
   if(A_state == WAIT_FOR_ACK){
-
+    printf("I am in state WAIT_FOR_ACK\n");
+    printf("Resending " PACKET_TOSTRING(A_packet));
     // if timeout, resend last packet
     tolayer3(ID_A, A_packet);
 
     // restart timer
+    printf("Restarting a timer for %.2f time units\n", A_TIMER);
     starttimer(ID_A, A_TIMER);
+  }else{
+    printf("I am not in the right state, Ignore the interrupt.\n");
   }
+  STOP_PRINTING;
 }  
 
 /* the following routine will be called once (only) before any other */
@@ -160,15 +195,37 @@ A_init()
 B_input(packet)
   struct pkt packet;
 {
-  if(!corrupt(packet) || has_seq(packet, B_seqnum)){
+  START_PRINTING;
+  printf("Receiver: L3 gives me " PACKET_TOSTRING(packet));
+
+  if(!corrupt(packet) && has_seq(packet, B_seqnum)){
+
+    printf("The message is legit\n");
+
+    printf("Delivering to L5 '%s'\n", packet.payload);
     tolayer5(ID_B, packet.payload);
+
     struct pkt res = make_pkt(B_seqnum, ACK, zero_array);
+
+    printf("Sending to L3 " PACKET_TOSTRING(res));
     tolayer3(ID_B, res);
+
+    printf("Transitioning to seqnum: %d\n", !B_seqnum);
     B_seqnum = !B_seqnum;
+
   }else{
+    if(corrupt(packet)){
+      printf("The packet is corrupted.\n");
+    }else{
+      printf("The packet has seqnum %d while I am waiting for seqnum %d\n", packet.seqnum, B_seqnum);
+    }
     struct pkt res = make_pkt(!B_seqnum, ACK, zero_array);
+
+    printf("Sending to L3 " PACKET_TOSTRING(res));
     tolayer3(ID_B, res);
   }
+
+  STOP_PRINTING;
 }
 
 /* called when B's timer goes off */
