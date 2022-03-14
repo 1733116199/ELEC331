@@ -1,0 +1,567 @@
+-----  Stop and Wait Network Simulator Version 1.1 -------- 
+
+Enter the number of messages to simulate: Enter  packet loss probability [enter 0.0 for no loss]:Enter packet corruption probability [0.0 for no corruption]:Enter average time between messages from sender's layer5 [ > 0.0]:Enter TRACE:
+EVENT time: 187.057404,  type: 1, fromlayer5  entity: 0
+===============
+Sender: L5 gives me (data: aaaaaaaaaaaaaaaaaaaaü)
+Accepting L5's request becasue I am ready to send message
+Invoking L3 with (seqnum: 0, acknum: NONE, payload: 'aaaaaaaaaaaaaaaaaaaaš™™>')
+          TOLAYER3: packet being corrupted
+Starting a timer for 20.00 time units
+Transitioning to state WAIT_FOR_ACK
+
+
+EVENT time: 192.522491,  type: 2, fromlayer3  entity: 1
+===============
+Receiver: L3 gives me (seqnum: 0, acknum: NONE, payload: 'Zaaaaaaaaaaaaaaaaaaa')
+The packet is corrupted.
+Sending to L3 (seqnum: 1, acknum: ACK, payload: '')
+
+
+EVENT time: 194.704117,  type: 2, fromlayer3  entity: 0
+===============
+Sender: L3 gives me (seqnum: 1, acknum: ACK, payload: '')
+I accept because I am waiting for receiver's acknowledgement
+The packet is not acknowledging seqnum 0 (the one I am waiting for)
+
+
+EVENT time: 207.057404,  type: 0, timerinterrupt   entity: 0
+===============
+Sender: there is an timer interrupt
+I am in state WAIT_FOR_ACK
+Resending (seqnum: 0, acknum: NONE, payload: 'aaaaaaaaaaaaaaaaaaaaš™™>')
+Restarting a timer for 20.00 time units
+
+
+EVENT time: 209.077896,  type: 2, fromlayer3  entity: 1
+===============
+Receiver: L3 gives me (seqnum: 0, acknum: NONE, payload: 'aaaaaaaaaaaaaaaaaaaa')
+The message is legit
+Delivering to L5 'aaaaaaaaaaaaaaaaaaaa'
+Sending to L3 (seqnum: 0, acknum: ACK, payload: '')
+          TOLAYER3: packet being corrupted
+Transitioning to seqnum: 1
+
+
+EVENT time: 213.545166,  type: 2, fromlayer3  entity: 0
+===============
+Sender: L3 gives me (seqnum: 0, acknum: ACK, payload: 'Z')
+I accept because I am waiting for receiver's acknowledgement
+The packet is corrupted. Ignoring
+
+
+EVENT time: 227.057404,  type: 0, timerinterrupt   entity: 0
+===============
+Sender: there is an timer interrupt
+I am in state WAIT_FOR_ACK
+Resending (seqnum: 0, acknum: NONE, payload: 'aaaaaaaaaaaaaaaaaaaaš™™>')
+          TOLAYER3: packet being lost
+Restarting a timer for 20.00 time units
+
+
+EVENT time: 247.057404,  type: 0, timerinterrupt   entity: 0
+===============
+Sender: there is an timer interrupt
+I am in state WAIT_FOR_ACK
+Resending (seqnum: 0, acknum: NONE, payload: 'aaaaaaaaaaaaaaaaaaaaš™™>')
+Restarting a timer for 20.00 time units
+
+
+EVENT time: 256.485840,  type: 2, fromlayer3  entity: 1
+===============
+Receiver: L3 gives me (seqnum: 0, acknum: NONE, payload: 'aaaaaaaaaaaaaaaaaaaa')
+The packet has seqnum 0 while I am waiting for seqnum 1
+Sending to L3 (seqnum: 0, acknum: ACK, payload: '')
+
+
+EVENT time: 263.948761,  type: 2, fromlayer3  entity: 0
+===============
+Sender: L3 gives me (seqnum: 0, acknum: ACK, payload: '')
+I accept because I am waiting for receiver's acknowledgement
+The packet is legit. Stopping timer
+Transitioning to (seqnum: 1, state: WAIT_TO_SEND)
+
+
+EVENT time: 351.248413,  type: 1, fromlayer5  entity: 0
+===============
+Sender: L5 gives me (data: bbbbbbbbbbbbbbbbbbbbü)
+Accepting L5's request becasue I am ready to send message
+Invoking L3 with (seqnum: 1, acknum: NONE, payload: 'bbbbbbbbbbbbbbbbbbbbš™™>')
+Starting a timer for 20.00 time units
+Transitioning to state WAIT_FOR_ACK
+
+
+EVENT time: 353.978668,  type: 2, fromlayer3  entity: 1
+===============
+Receiver: L3 gives me (seqnum: 1, acknum: NONE, payload: 'bbbbbbbbbbbbbbbbbbbb')
+The message is legit
+Delivering to L5 'bbbbbbbbbbbbbbbbbbbb'
+Sending to L3 (seqnum: 1, acknum: ACK, payload: '')
+          TOLAYER3: packet being corrupted
+Transitioning to seqnum: 0
+
+
+EVENT time: 356.345001,  type: 2, fromlayer3  entity: 0
+===============
+Sender: L3 gives me (seqnum: 1, acknum: ACK, payload: 'Z')
+I accept because I am waiting for receiver's acknowledgement
+The packet is corrupted. Ignoring
+
+
+EVENT time: 371.248413,  type: 0, timerinterrupt   entity: 0
+===============
+Sender: there is an timer interrupt
+I am in state WAIT_FOR_ACK
+Resending (seqnum: 1, acknum: NONE, payload: 'bbbbbbbbbbbbbbbbbbbbš™™>')
+          TOLAYER3: packet being lost
+Restarting a timer for 20.00 time units
+
+
+EVENT time: 391.248413,  type: 0, timerinterrupt   entity: 0
+===============
+Sender: there is an timer interrupt
+I am in state WAIT_FOR_ACK
+Resending (seqnum: 1, acknum: NONE, payload: 'bbbbbbbbbbbbbbbbbbbbš™™>')
+          TOLAYER3: packet being lost
+Restarting a timer for 20.00 time units
+
+
+EVENT time: 411.248413,  type: 0, timerinterrupt   entity: 0
+===============
+Sender: there is an timer interrupt
+I am in state WAIT_FOR_ACK
+Resending (seqnum: 1, acknum: NONE, payload: 'bbbbbbbbbbbbbbbbbbbbš™™>')
+Restarting a timer for 20.00 time units
+
+
+EVENT time: 417.497437,  type: 2, fromlayer3  entity: 1
+===============
+Receiver: L3 gives me (seqnum: 1, acknum: NONE, payload: 'bbbbbbbbbbbbbbbbbbbb')
+The packet has seqnum 1 while I am waiting for seqnum 0
+Sending to L3 (seqnum: 1, acknum: ACK, payload: '')
+
+
+EVENT time: 418.978058,  type: 2, fromlayer3  entity: 0
+===============
+Sender: L3 gives me (seqnum: 1, acknum: ACK, payload: '')
+I accept because I am waiting for receiver's acknowledgement
+The packet is legit. Stopping timer
+Transitioning to (seqnum: 0, state: WAIT_TO_SEND)
+
+
+EVENT time: 463.018402,  type: 1, fromlayer5  entity: 0
+===============
+Sender: L5 gives me (data: ccccccccccccccccccccü)
+Accepting L5's request becasue I am ready to send message
+Invoking L3 with (seqnum: 0, acknum: NONE, payload: 'ccccccccccccccccccccš™™>')
+Starting a timer for 20.00 time units
+Transitioning to state WAIT_FOR_ACK
+
+
+EVENT time: 469.379089,  type: 2, fromlayer3  entity: 1
+===============
+Receiver: L3 gives me (seqnum: 0, acknum: NONE, payload: 'cccccccccccccccccccc')
+The message is legit
+Delivering to L5 'cccccccccccccccccccc'
+Sending to L3 (seqnum: 0, acknum: ACK, payload: '')
+          TOLAYER3: packet being lost
+Transitioning to seqnum: 1
+
+
+EVENT time: 483.018402,  type: 0, timerinterrupt   entity: 0
+===============
+Sender: there is an timer interrupt
+I am in state WAIT_FOR_ACK
+Resending (seqnum: 0, acknum: NONE, payload: 'ccccccccccccccccccccš™™>')
+Restarting a timer for 20.00 time units
+
+
+EVENT time: 484.076874,  type: 2, fromlayer3  entity: 1
+===============
+Receiver: L3 gives me (seqnum: 0, acknum: NONE, payload: 'cccccccccccccccccccc')
+The packet has seqnum 0 while I am waiting for seqnum 1
+Sending to L3 (seqnum: 0, acknum: ACK, payload: '')
+          TOLAYER3: packet being lost
+
+
+EVENT time: 503.018402,  type: 0, timerinterrupt   entity: 0
+===============
+Sender: there is an timer interrupt
+I am in state WAIT_FOR_ACK
+Resending (seqnum: 0, acknum: NONE, payload: 'ccccccccccccccccccccš™™>')
+Restarting a timer for 20.00 time units
+
+
+EVENT time: 508.292511,  type: 2, fromlayer3  entity: 1
+===============
+Receiver: L3 gives me (seqnum: 0, acknum: NONE, payload: 'cccccccccccccccccccc')
+The packet has seqnum 0 while I am waiting for seqnum 1
+Sending to L3 (seqnum: 0, acknum: ACK, payload: '')
+          TOLAYER3: packet being lost
+
+
+EVENT time: 523.018433,  type: 0, timerinterrupt   entity: 0
+===============
+Sender: there is an timer interrupt
+I am in state WAIT_FOR_ACK
+Resending (seqnum: 0, acknum: NONE, payload: 'ccccccccccccccccccccš™™>')
+Restarting a timer for 20.00 time units
+
+
+EVENT time: 531.799683,  type: 2, fromlayer3  entity: 1
+===============
+Receiver: L3 gives me (seqnum: 0, acknum: NONE, payload: 'cccccccccccccccccccc')
+The packet has seqnum 0 while I am waiting for seqnum 1
+Sending to L3 (seqnum: 0, acknum: ACK, payload: '')
+          TOLAYER3: packet being lost
+
+
+EVENT time: 543.018433,  type: 0, timerinterrupt   entity: 0
+===============
+Sender: there is an timer interrupt
+I am in state WAIT_FOR_ACK
+Resending (seqnum: 0, acknum: NONE, payload: 'ccccccccccccccccccccš™™>')
+          TOLAYER3: packet being lost
+Restarting a timer for 20.00 time units
+
+
+EVENT time: 563.018433,  type: 0, timerinterrupt   entity: 0
+===============
+Sender: there is an timer interrupt
+I am in state WAIT_FOR_ACK
+Resending (seqnum: 0, acknum: NONE, payload: 'ccccccccccccccccccccš™™>')
+          TOLAYER3: packet being corrupted
+Restarting a timer for 20.00 time units
+
+
+EVENT time: 567.837708,  type: 2, fromlayer3  entity: 1
+===============
+Receiver: L3 gives me (seqnum: 0, acknum: NONE, payload: 'Zccccccccccccccccccc')
+The packet is corrupted.
+Sending to L3 (seqnum: 0, acknum: ACK, payload: '')
+
+
+EVENT time: 570.528870,  type: 1, fromlayer5  entity: 0
+===============
+Sender: L5 gives me (data: ddddddddddddddddddddü)
+Refusing L5's request because I still haven't send (seqnum: 0, acknum: NONE, payload: 'ccccccccccccccccccccš™™>')
+
+
+EVENT time: 571.499451,  type: 2, fromlayer3  entity: 0
+===============
+Sender: L3 gives me (seqnum: 0, acknum: ACK, payload: '')
+I accept because I am waiting for receiver's acknowledgement
+The packet is legit. Stopping timer
+Transitioning to (seqnum: 1, state: WAIT_TO_SEND)
+
+
+EVENT time: 753.479187,  type: 1, fromlayer5  entity: 0
+===============
+Sender: L5 gives me (data: eeeeeeeeeeeeeeeeeeeeü)
+Accepting L5's request becasue I am ready to send message
+Invoking L3 with (seqnum: 1, acknum: NONE, payload: 'eeeeeeeeeeeeeeeeeeeeš™™>')
+          TOLAYER3: packet being lost
+Starting a timer for 20.00 time units
+Transitioning to state WAIT_FOR_ACK
+
+
+EVENT time: 773.479187,  type: 0, timerinterrupt   entity: 0
+===============
+Sender: there is an timer interrupt
+I am in state WAIT_FOR_ACK
+Resending (seqnum: 1, acknum: NONE, payload: 'eeeeeeeeeeeeeeeeeeeeš™™>')
+Restarting a timer for 20.00 time units
+
+
+EVENT time: 782.870605,  type: 2, fromlayer3  entity: 1
+===============
+Receiver: L3 gives me (seqnum: 1, acknum: NONE, payload: 'eeeeeeeeeeeeeeeeeeee')
+The message is legit
+Delivering to L5 'eeeeeeeeeeeeeeeeeeee'
+Sending to L3 (seqnum: 1, acknum: ACK, payload: '')
+          TOLAYER3: packet being corrupted
+Transitioning to seqnum: 0
+
+
+EVENT time: 784.892700,  type: 2, fromlayer3  entity: 0
+===============
+Sender: L3 gives me (seqnum: 1, acknum: ACK, payload: 'Z')
+I accept because I am waiting for receiver's acknowledgement
+The packet is corrupted. Ignoring
+
+
+EVENT time: 793.479187,  type: 0, timerinterrupt   entity: 0
+===============
+Sender: there is an timer interrupt
+I am in state WAIT_FOR_ACK
+Resending (seqnum: 1, acknum: NONE, payload: 'eeeeeeeeeeeeeeeeeeeeš™™>')
+          TOLAYER3: packet being corrupted
+Restarting a timer for 20.00 time units
+
+
+EVENT time: 795.285522,  type: 2, fromlayer3  entity: 1
+===============
+Receiver: L3 gives me (seqnum: 1, acknum: NONE, payload: 'Zeeeeeeeeeeeeeeeeeee')
+The packet is corrupted.
+Sending to L3 (seqnum: 1, acknum: ACK, payload: '')
+          TOLAYER3: packet being corrupted
+
+
+EVENT time: 801.297668,  type: 2, fromlayer3  entity: 0
+===============
+Sender: L3 gives me (seqnum: 1, acknum: ACK, payload: 'Z')
+I accept because I am waiting for receiver's acknowledgement
+The packet is corrupted. Ignoring
+
+
+EVENT time: 813.479187,  type: 0, timerinterrupt   entity: 0
+===============
+Sender: there is an timer interrupt
+I am in state WAIT_FOR_ACK
+Resending (seqnum: 1, acknum: NONE, payload: 'eeeeeeeeeeeeeeeeeeeeš™™>')
+Restarting a timer for 20.00 time units
+
+
+EVENT time: 818.233215,  type: 2, fromlayer3  entity: 1
+===============
+Receiver: L3 gives me (seqnum: 1, acknum: NONE, payload: 'eeeeeeeeeeeeeeeeeeee')
+The packet has seqnum 1 while I am waiting for seqnum 0
+Sending to L3 (seqnum: 1, acknum: ACK, payload: '')
+
+
+EVENT time: 823.742920,  type: 2, fromlayer3  entity: 0
+===============
+Sender: L3 gives me (seqnum: 1, acknum: ACK, payload: '')
+I accept because I am waiting for receiver's acknowledgement
+The packet is legit. Stopping timer
+Transitioning to (seqnum: 0, state: WAIT_TO_SEND)
+
+
+EVENT time: 929.274353,  type: 1, fromlayer5  entity: 0
+===============
+Sender: L5 gives me (data: ffffffffffffffffffffü)
+Accepting L5's request becasue I am ready to send message
+Invoking L3 with (seqnum: 0, acknum: NONE, payload: 'ffffffffffffffffffffš™™>')
+          TOLAYER3: packet being corrupted
+Starting a timer for 20.00 time units
+Transitioning to state WAIT_FOR_ACK
+
+
+EVENT time: 937.136292,  type: 2, fromlayer3  entity: 1
+===============
+Receiver: L3 gives me (seqnum: 999999, acknum: NONE, payload: 'ffffffffffffffffffff')
+The packet is corrupted.
+Sending to L3 (seqnum: 1, acknum: ACK, payload: '')
+          TOLAYER3: packet being lost
+
+
+EVENT time: 949.274353,  type: 0, timerinterrupt   entity: 0
+===============
+Sender: there is an timer interrupt
+I am in state WAIT_FOR_ACK
+Resending (seqnum: 0, acknum: NONE, payload: 'ffffffffffffffffffffš™™>')
+Restarting a timer for 20.00 time units
+
+
+EVENT time: 957.232239,  type: 2, fromlayer3  entity: 1
+===============
+Receiver: L3 gives me (seqnum: 0, acknum: NONE, payload: 'ffffffffffffffffffff')
+The message is legit
+Delivering to L5 'ffffffffffffffffffff'
+Sending to L3 (seqnum: 0, acknum: ACK, payload: '')
+Transitioning to seqnum: 1
+
+
+EVENT time: 961.624695,  type: 2, fromlayer3  entity: 0
+===============
+Sender: L3 gives me (seqnum: 0, acknum: ACK, payload: '')
+I accept because I am waiting for receiver's acknowledgement
+The packet is legit. Stopping timer
+Transitioning to (seqnum: 1, state: WAIT_TO_SEND)
+
+
+EVENT time: 1026.760010,  type: 1, fromlayer5  entity: 0
+===============
+Sender: L5 gives me (data: ggggggggggggggggggggü)
+Accepting L5's request becasue I am ready to send message
+Invoking L3 with (seqnum: 1, acknum: NONE, payload: 'ggggggggggggggggggggš™™>')
+Starting a timer for 20.00 time units
+Transitioning to state WAIT_FOR_ACK
+
+
+EVENT time: 1036.608032,  type: 2, fromlayer3  entity: 1
+===============
+Receiver: L3 gives me (seqnum: 1, acknum: NONE, payload: 'gggggggggggggggggggg')
+The message is legit
+Delivering to L5 'gggggggggggggggggggg'
+Sending to L3 (seqnum: 1, acknum: ACK, payload: '')
+Transitioning to seqnum: 0
+
+
+EVENT time: 1039.353271,  type: 2, fromlayer3  entity: 0
+===============
+Sender: L3 gives me (seqnum: 1, acknum: ACK, payload: '')
+I accept because I am waiting for receiver's acknowledgement
+The packet is legit. Stopping timer
+Transitioning to (seqnum: 0, state: WAIT_TO_SEND)
+
+
+EVENT time: 1087.165405,  type: 1, fromlayer5  entity: 0
+===============
+Sender: L5 gives me (data: hhhhhhhhhhhhhhhhhhhhü)
+Accepting L5's request becasue I am ready to send message
+Invoking L3 with (seqnum: 0, acknum: NONE, payload: 'hhhhhhhhhhhhhhhhhhhhš™™>')
+Starting a timer for 20.00 time units
+Transitioning to state WAIT_FOR_ACK
+
+
+EVENT time: 1093.781128,  type: 2, fromlayer3  entity: 1
+===============
+Receiver: L3 gives me (seqnum: 0, acknum: NONE, payload: 'hhhhhhhhhhhhhhhhhhhh')
+The message is legit
+Delivering to L5 'hhhhhhhhhhhhhhhhhhhh'
+Sending to L3 (seqnum: 0, acknum: ACK, payload: '')
+Transitioning to seqnum: 1
+
+
+EVENT time: 1097.088135,  type: 2, fromlayer3  entity: 0
+===============
+Sender: L3 gives me (seqnum: 0, acknum: ACK, payload: '')
+I accept because I am waiting for receiver's acknowledgement
+The packet is legit. Stopping timer
+Transitioning to (seqnum: 1, state: WAIT_TO_SEND)
+
+
+EVENT time: 1237.990479,  type: 1, fromlayer5  entity: 0
+===============
+Sender: L5 gives me (data: iiiiiiiiiiiiiiiiiiiiü)
+Accepting L5's request becasue I am ready to send message
+Invoking L3 with (seqnum: 1, acknum: NONE, payload: 'iiiiiiiiiiiiiiiiiiiiš™™>')
+          TOLAYER3: packet being corrupted
+Starting a timer for 20.00 time units
+Transitioning to state WAIT_FOR_ACK
+
+
+EVENT time: 1239.504639,  type: 2, fromlayer3  entity: 1
+===============
+Receiver: L3 gives me (seqnum: 1, acknum: NONE, payload: 'Ziiiiiiiiiiiiiiiiiii')
+The packet is corrupted.
+Sending to L3 (seqnum: 0, acknum: ACK, payload: '')
+          TOLAYER3: packet being corrupted
+
+
+EVENT time: 1240.602661,  type: 2, fromlayer3  entity: 0
+===============
+Sender: L3 gives me (seqnum: 0, acknum: ACK, payload: 'Z')
+I accept because I am waiting for receiver's acknowledgement
+The packet is corrupted. Ignoring
+
+
+EVENT time: 1257.990479,  type: 0, timerinterrupt   entity: 0
+===============
+Sender: there is an timer interrupt
+I am in state WAIT_FOR_ACK
+Resending (seqnum: 1, acknum: NONE, payload: 'iiiiiiiiiiiiiiiiiiiiš™™>')
+Restarting a timer for 20.00 time units
+
+
+EVENT time: 1260.139893,  type: 2, fromlayer3  entity: 1
+===============
+Receiver: L3 gives me (seqnum: 1, acknum: NONE, payload: 'iiiiiiiiiiiiiiiiiiii')
+The message is legit
+Delivering to L5 'iiiiiiiiiiiiiiiiiiii'
+Sending to L3 (seqnum: 1, acknum: ACK, payload: '')
+          TOLAYER3: packet being corrupted
+Transitioning to seqnum: 0
+
+
+EVENT time: 1261.723755,  type: 2, fromlayer3  entity: 0
+===============
+Sender: L3 gives me (seqnum: 1, acknum: ACK, payload: 'Z')
+I accept because I am waiting for receiver's acknowledgement
+The packet is corrupted. Ignoring
+
+
+EVENT time: 1277.990479,  type: 0, timerinterrupt   entity: 0
+===============
+Sender: there is an timer interrupt
+I am in state WAIT_FOR_ACK
+Resending (seqnum: 1, acknum: NONE, payload: 'iiiiiiiiiiiiiiiiiiiiš™™>')
+Restarting a timer for 20.00 time units
+
+
+EVENT time: 1283.237549,  type: 2, fromlayer3  entity: 1
+===============
+Receiver: L3 gives me (seqnum: 1, acknum: NONE, payload: 'iiiiiiiiiiiiiiiiiiii')
+The packet has seqnum 1 while I am waiting for seqnum 0
+Sending to L3 (seqnum: 1, acknum: ACK, payload: '')
+          TOLAYER3: packet being corrupted
+
+
+EVENT time: 1292.181274,  type: 2, fromlayer3  entity: 0
+===============
+Sender: L3 gives me (seqnum: 1, acknum: ACK, payload: 'Z')
+I accept because I am waiting for receiver's acknowledgement
+The packet is corrupted. Ignoring
+
+
+EVENT time: 1297.990479,  type: 0, timerinterrupt   entity: 0
+===============
+Sender: there is an timer interrupt
+I am in state WAIT_FOR_ACK
+Resending (seqnum: 1, acknum: NONE, payload: 'iiiiiiiiiiiiiiiiiiiiš™™>')
+          TOLAYER3: packet being corrupted
+Restarting a timer for 20.00 time units
+
+
+EVENT time: 1307.312988,  type: 2, fromlayer3  entity: 1
+===============
+Receiver: L3 gives me (seqnum: 1, acknum: NONE, payload: 'Ziiiiiiiiiiiiiiiiiii')
+The packet is corrupted.
+Sending to L3 (seqnum: 1, acknum: ACK, payload: '')
+          TOLAYER3: packet being corrupted
+
+
+EVENT time: 1310.309326,  type: 2, fromlayer3  entity: 0
+===============
+Sender: L3 gives me (seqnum: 1, acknum: ACK, payload: 'Z')
+I accept because I am waiting for receiver's acknowledgement
+The packet is corrupted. Ignoring
+
+
+EVENT time: 1317.990479,  type: 0, timerinterrupt   entity: 0
+===============
+Sender: there is an timer interrupt
+I am in state WAIT_FOR_ACK
+Resending (seqnum: 1, acknum: NONE, payload: 'iiiiiiiiiiiiiiiiiiiiš™™>')
+          TOLAYER3: packet being corrupted
+Restarting a timer for 20.00 time units
+
+
+EVENT time: 1319.139526,  type: 2, fromlayer3  entity: 1
+===============
+Receiver: L3 gives me (seqnum: 1, acknum: NACK, payload: 'iiiiiiiiiiiiiiiiiiii')
+The packet is corrupted.
+Sending to L3 (seqnum: 1, acknum: ACK, payload: '')
+
+
+EVENT time: 1326.708008,  type: 2, fromlayer3  entity: 0
+===============
+Sender: L3 gives me (seqnum: 1, acknum: ACK, payload: '')
+I accept because I am waiting for receiver's acknowledgement
+The packet is legit. Stopping timer
+Transitioning to (seqnum: 0, state: WAIT_TO_SEND)
+
+
+EVENT time: 1354.863281,  type: 1, fromlayer5  entity: 0
+===============
+Sender: L5 gives me (data: jjjjjjjjjjjjjjjjjjjjü)
+Accepting L5's request becasue I am ready to send message
+Invoking L3 with (seqnum: 0, acknum: NONE, payload: 'jjjjjjjjjjjjjjjjjjjjš™™>')
+Starting a timer for 20.00 time units
+Transitioning to state WAIT_FOR_ACK
+
+
+EVENT time: 1362.809082,  type: 2, fromlayer3  entity: 1
+ Simulator terminated at time 1362.809082
+ after sending 10 msgs from layer5
