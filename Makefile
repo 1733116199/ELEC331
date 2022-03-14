@@ -10,7 +10,7 @@ run_prog2_part1:
 	printf "11\n0.1\n0.3\n1000\n2\n" | ./prog2_part1 > prog2_part1.log
 
 run_prog2_part2:
-	printf "21\n0.2\n0.2\n10\n2\n" | ./prog2_part2 > prog2_part2.log
+	printf "40\n0.2\n0.2\n10\n2\n" | ./prog2_part2 > prog2_part2.log
 
 clean:
 	rm -rf prog2_part1 prog2_part1
