@@ -39,11 +39,13 @@ struct pkt {
 
 #define ID_A 0
 #define ID_B 1
-#define A_TIMER ((double)20.0)
+#define A_TIMER ((double)80.0)
 
 #define NONE 0
 #define ACK 1
 #define NACK 2
+
+#define N 10
 
 #define WAIT_TO_SEND 1
 #define WAIT_FOR_ACK 2
@@ -56,12 +58,14 @@ struct pkt {
 #define MESSAGE_TOSTRING(M) "(data: %s)\n", ((const char *)M.data)
 
 // global variables for sender
-int A_seqnum;
-int A_state;
-struct pkt A_packet;
+int A_base;
+int A_nextseqnum;
+struct pkt A_sndpkt[51];
 
 // global variables for receiver
-int B_seqnum;
+int B_expectedseqnum;
+struct pkt B_sndpkt;
+
 const char zero_array[20] = {0};
 
 int calc_checksum(struct pkt packet){
@@ -102,23 +106,34 @@ A_output(message)
   struct msg message;
 {
   START_PRINTING;
+  printf("base = %d, nextseqnum = %d\n", A_base, A_nextseqnum);
   printf("Sender: L5 gives me " MESSAGE_TOSTRING(message));
 
-  if(A_state == WAIT_TO_SEND){
+  if(A_nextseqnum<A_base+N){
 
-    printf("Accepting L5's request becasue I am ready to send message\n");
-    A_packet = make_pkt(A_seqnum, NONE, message.data);
+    printf("Accepting L5's request becasue nextseqnum (%d) < base (%d) + N (%d)\n", A_nextseqnum, A_base, N);
+    A_sndpkt[A_nextseqnum] = make_pkt(A_nextseqnum, NONE, message.data);
 
-    printf("Invoking L3 with " PACKET_TOSTRING(A_packet));
-    tolayer3(ID_A, A_packet);
+    printf("Sending to L3 sndpkt[%d]\n", A_nextseqnum);
+    printf("Content: " PACKET_TOSTRING(A_sndpkt[A_nextseqnum]));
+    tolayer3(ID_A, A_sndpkt[A_nextseqnum]);
 
-    printf("Starting a timer for %.2f time units\n", A_TIMER);
-    starttimer(ID_A, A_TIMER);
+    if(A_base == A_nextseqnum){
 
-    printf("Transitioning to state WAIT_FOR_ACK\n");
-    A_state = WAIT_FOR_ACK;
+      printf("base (%d) == nextseqnum (%d)\n", A_base, A_nextseqnum);
+      printf("Starting a timer for %.2f time units\n", A_TIMER);
+      starttimer(ID_A, A_TIMER);
+      
+    }else{
+      printf("base (%d) != nextseqnum (%d)\n", A_base, A_nextseqnum);
+    }
+
+    printf("nextseqnum++\n");
+    A_nextseqnum++;
+
   }else{
-    printf("Refusing L5's request because I still haven't send " PACKET_TOSTRING(A_packet));
+
+    printf("Refusing L5's request because nextseqnum (%d) >= base (%d) + N (%d)\n", A_nextseqnum, A_base, N);
   }
   STOP_PRINTING;
 }
@@ -134,27 +149,39 @@ A_input(packet)
   struct pkt packet;
 {
   START_PRINTING;
+  printf("base = %d, nextseqnum = %d\n", A_base, A_nextseqnum);
+
   printf("Sender: L3 gives me " PACKET_TOSTRING(packet));
-  if(A_state == WAIT_FOR_ACK){
-    printf("I accept because I am waiting for receiver's acknowledgement\n");
 
-    if(!corrupt(packet) && is_ack(packet, A_seqnum)){
+  if(!corrupt(packet)){
 
-      printf("The packet is legit. Stopping timer\n");
+    printf("I accept because the packet is NOT corrupted\n");
+
+    // My code uses seqnum to store the acknum in the textbook
+    // My code also use acknum to store the ACK symbol, wheras the textbook store it in payload
+    // My payload has no use when I send ACK messages
+    // This is why I use packet.seqnum here instead of packet.acknum.
+    printf("Setting base to %d\n", packet.seqnum + 1);
+    A_base = packet.seqnum + 1;
+
+    if(A_base == A_nextseqnum){
+
+      printf("base(%d) == nextseqnum(%d)\n", A_base, A_nextseqnum);
+      printf("Stopping timer\n");
       stoptimer(ID_A);
 
-      printf("Transitioning to (seqnum: %d, state: WAIT_TO_SEND)\n", !A_seqnum);
-      A_seqnum = !A_seqnum;
-      A_state = WAIT_TO_SEND;
     }else{
-      if(corrupt(packet)){
-        printf("The packet is corrupted. Ignoring\n");
-      }else{
-        printf("The packet is not acknowledging seqnum %d (the one I am waiting for)\n", A_seqnum);
-      }
+
+      printf("base(%d) != nextseqnum(%d)\n", A_base, A_nextseqnum);
+      printf("Starting timer with %.2f time units\n", A_TIMER);
+      starttimer(ID_A, A_TIMER);
+
     }
+
   }else{
-    printf("I refuse because I am not waiting for receiver's acknowledgement\n");
+
+    printf("I refuse because the packet is corrupted\n");
+
   }
   STOP_PRINTING;
 }
@@ -163,18 +190,20 @@ A_input(packet)
 A_timerinterrupt()
 {
   START_PRINTING;
-  printf("Sender: there is an timer interrupt\n");
-  if(A_state == WAIT_FOR_ACK){
-    printf("I am in state WAIT_FOR_ACK\n");
-    printf("Resending " PACKET_TOSTRING(A_packet));
-    // if timeout, resend last packet
-    tolayer3(ID_A, A_packet);
+  printf("base = %d, nextseqnum = %d\n", A_base, A_nextseqnum);
 
-    // restart timer
-    printf("Restarting a timer for %.2f time units\n", A_TIMER);
-    starttimer(ID_A, A_TIMER);
-  }else{
-    printf("I am not in the right state, Ignore the interrupt.\n");
+  printf("Sender: there is an timer interrupt\n");
+
+  printf("Starting timer with %.2f time units\n", A_TIMER);
+  starttimer(ID_A, A_TIMER);
+
+  for(int i = A_base; i < A_nextseqnum; i++){
+
+    printf("Sending to L3 packet sndpkt[%d]\n", i);
+    printf("Content: " PACKET_TOSTRING(A_sndpkt[i]));
+
+    tolayer3(ID_A, A_sndpkt[i]);
+
   }
   STOP_PRINTING;
 }  
@@ -183,9 +212,8 @@ A_timerinterrupt()
 /* entity A routines are called. You can use it to do any initialization */
 A_init()
 {
-  A_seqnum = 0;
-  A_state = WAIT_TO_SEND;
-  A_packet = make_pkt(0, NONE, zero_array);
+  A_base = 1;
+  A_nextseqnum = 1;
 }
 
 
@@ -196,33 +224,36 @@ B_input(packet)
   struct pkt packet;
 {
   START_PRINTING;
+  printf("expectedseqnum: %d\n", B_expectedseqnum);
+  printf("sndpkt = " PACKET_TOSTRING(B_sndpkt));
+
   printf("Receiver: L3 gives me " PACKET_TOSTRING(packet));
 
-  if(!corrupt(packet) && has_seq(packet, B_seqnum)){
+  if(!corrupt(packet) && has_seq(packet, B_expectedseqnum)){
 
-    printf("The message is legit\n");
+    printf("Accepting because the message is not corrupted and has expectedseqnum %d\n", B_expectedseqnum);
 
     printf("Delivering to L5 '%s'\n", packet.payload);
     tolayer5(ID_B, packet.payload);
 
-    struct pkt res = make_pkt(B_seqnum, ACK, zero_array);
+    B_sndpkt = make_pkt(B_expectedseqnum, ACK, zero_array);
 
-    printf("Sending to L3 " PACKET_TOSTRING(res));
-    tolayer3(ID_B, res);
+    printf("Sending to L3 " PACKET_TOSTRING(B_sndpkt));
+    tolayer3(ID_B, B_sndpkt);
 
-    printf("Transitioning to seqnum: %d\n", !B_seqnum);
-    B_seqnum = !B_seqnum;
+    printf("expectedseqnum++\n");
+    B_expectedseqnum++;
 
   }else{
-    if(corrupt(packet)){
-      printf("The packet is corrupted.\n");
-    }else{
-      printf("The packet has seqnum %d while I am waiting for seqnum %d\n", packet.seqnum, B_seqnum);
-    }
-    struct pkt res = make_pkt(!B_seqnum, ACK, zero_array);
 
-    printf("Sending to L3 " PACKET_TOSTRING(res));
-    tolayer3(ID_B, res);
+    if(corrupt(packet)){
+      printf("Refusing because the packet is corrupted.\n");
+    }else{
+      printf("Refusing because the packet has seqnum %d while I am waiting for seqnum %d\n", packet.seqnum, B_expectedseqnum);
+    }
+
+    printf("Sending to L3 " PACKET_TOSTRING(B_sndpkt));
+    tolayer3(ID_B, B_sndpkt);
   }
 
   STOP_PRINTING;
@@ -237,7 +268,8 @@ B_timerinterrupt()
 /* entity B routines are called. You can use it to do any initialization */
 B_init()
 {
-  B_seqnum = 0;
+  B_expectedseqnum = 1;
+  B_sndpkt = make_pkt(0, ACK, zero_array);
 }
 
 
