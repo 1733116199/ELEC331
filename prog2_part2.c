@@ -45,7 +45,7 @@ struct pkt {
 #define ACK 1
 #define NACK 2
 
-#define N 10
+#define N 20
 
 #define WAIT_TO_SEND 1
 #define WAIT_FOR_ACK 2

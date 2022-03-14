@@ -4,8 +4,8 @@ Enter the number of messages to simulate: Enter  packet loss probability [enter 
 EVENT time: 18.705740,  type: 1, fromlayer5  entity: 0
 ===============
 base = 1, nextseqnum = 1
-Sender: L5 gives me (data: aaaaaaaaaaaaaaaaaaaaÿ)
-Accepting L5's request becasue nextseqnum (1) < base (1) + N (10)
+Sender: L5 gives me (data: aaaaaaaaaaaaaaaaaaaaþ)
+Accepting L5's request becasue nextseqnum (1) < base (1) + N (20)
 Sending to L3 sndpkt[1]
 Content: (seqnum: 1, acknum: NONE, payload: 'aaaaaaaaaaaaaaaaaaaa')
 base (1) == nextseqnum (1)
@@ -35,8 +35,8 @@ I refuse because the packet is corrupted
 EVENT time: 35.124840,  type: 1, fromlayer5  entity: 0
 ===============
 base = 1, nextseqnum = 2
-Sender: L5 gives me (data: bbbbbbbbbbbbbbbbbbbbÿ)
-Accepting L5's request becasue nextseqnum (2) < base (1) + N (10)
+Sender: L5 gives me (data: bbbbbbbbbbbbbbbbbbbbþ)
+Accepting L5's request becasue nextseqnum (2) < base (1) + N (20)
 Sending to L3 sndpkt[2]
 Content: (seqnum: 2, acknum: NONE, payload: 'bbbbbbbbbbbbbbbbbbbb')
           TOLAYER3: packet being lost
@@ -47,8 +47,8 @@ nextseqnum++
 EVENT time: 37.680447,  type: 1, fromlayer5  entity: 0
 ===============
 base = 1, nextseqnum = 3
-Sender: L5 gives me (data: ccccccccccccccccccccÿ)
-Accepting L5's request becasue nextseqnum (3) < base (1) + N (10)
+Sender: L5 gives me (data: ccccccccccccccccccccþ)
+Accepting L5's request becasue nextseqnum (3) < base (1) + N (20)
 Sending to L3 sndpkt[3]
 Content: (seqnum: 3, acknum: NONE, payload: 'cccccccccccccccccccc')
           TOLAYER3: packet being corrupted
@@ -83,8 +83,8 @@ Sending to L3 (seqnum: 1, acknum: ACK, payload: '')
 EVENT time: 46.394402,  type: 1, fromlayer5  entity: 0
 ===============
 base = 1, nextseqnum = 4
-Sender: L5 gives me (data: ddddddddddddddddddddÿ)
-Accepting L5's request becasue nextseqnum (4) < base (1) + N (10)
+Sender: L5 gives me (data: ddddddddddddddddddddþ)
+Accepting L5's request becasue nextseqnum (4) < base (1) + N (20)
 Sending to L3 sndpkt[4]
 Content: (seqnum: 4, acknum: NONE, payload: 'dddddddddddddddddddd')
           TOLAYER3: packet being lost
@@ -114,8 +114,8 @@ expectedseqnum++
 EVENT time: 53.202408,  type: 1, fromlayer5  entity: 0
 ===============
 base = 1, nextseqnum = 5
-Sender: L5 gives me (data: eeeeeeeeeeeeeeeeeeeeÿ)
-Accepting L5's request becasue nextseqnum (5) < base (1) + N (10)
+Sender: L5 gives me (data: eeeeeeeeeeeeeeeeeeeeþ)
+Accepting L5's request becasue nextseqnum (5) < base (1) + N (20)
 Sending to L3 sndpkt[5]
 Content: (seqnum: 5, acknum: NONE, payload: 'eeeeeeeeeeeeeeeeeeee')
 base (1) != nextseqnum (5)
@@ -215,8 +215,8 @@ Sending to L3 (seqnum: 3, acknum: ACK, payload: '')
 EVENT time: 72.839478,  type: 1, fromlayer5  entity: 0
 ===============
 base = 1, nextseqnum = 6
-Sender: L5 gives me (data: ffffffffffffffffffffÿ)
-Accepting L5's request becasue nextseqnum (6) < base (1) + N (10)
+Sender: L5 gives me (data: ffffffffffffffffffffþ)
+Accepting L5's request becasue nextseqnum (6) < base (1) + N (20)
 Sending to L3 sndpkt[6]
 Content: (seqnum: 6, acknum: NONE, payload: 'ffffffffffffffffffff')
 base (1) != nextseqnum (6)
@@ -226,8 +226,8 @@ nextseqnum++
 EVENT time: 73.456062,  type: 1, fromlayer5  entity: 0
 ===============
 base = 1, nextseqnum = 7
-Sender: L5 gives me (data: ggggggggggggggggggggÿ)
-Accepting L5's request becasue nextseqnum (7) < base (1) + N (10)
+Sender: L5 gives me (data: ggggggggggggggggggggþ)
+Accepting L5's request becasue nextseqnum (7) < base (1) + N (20)
 Sending to L3 sndpkt[7]
 Content: (seqnum: 7, acknum: NONE, payload: 'gggggggggggggggggggg')
           TOLAYER3: packet being lost
@@ -249,8 +249,8 @@ Warning: attempt to start a timer that is already started
 EVENT time: 76.283989,  type: 1, fromlayer5  entity: 0
 ===============
 base = 4, nextseqnum = 8
-Sender: L5 gives me (data: hhhhhhhhhhhhhhhhhhhhÿ)
-Accepting L5's request becasue nextseqnum (8) < base (4) + N (10)
+Sender: L5 gives me (data: hhhhhhhhhhhhhhhhhhhhþ)
+Accepting L5's request becasue nextseqnum (8) < base (4) + N (20)
 Sending to L3 sndpkt[8]
 Content: (seqnum: 8, acknum: NONE, payload: 'hhhhhhhhhhhhhhhhhhhh')
           TOLAYER3: packet being lost
@@ -261,8 +261,8 @@ nextseqnum++
 EVENT time: 78.458145,  type: 1, fromlayer5  entity: 0
 ===============
 base = 4, nextseqnum = 9
-Sender: L5 gives me (data: iiiiiiiiiiiiiiiiiiiiÿ)
-Accepting L5's request becasue nextseqnum (9) < base (4) + N (10)
+Sender: L5 gives me (data: iiiiiiiiiiiiiiiiiiiiþ)
+Accepting L5's request becasue nextseqnum (9) < base (4) + N (20)
 Sending to L3 sndpkt[9]
 Content: (seqnum: 9, acknum: NONE, payload: 'iiiiiiiiiiiiiiiiiiii')
           TOLAYER3: packet being lost
@@ -304,8 +304,8 @@ Sending to L3 (seqnum: 3, acknum: ACK, payload: '')
 EVENT time: 82.674294,  type: 1, fromlayer5  entity: 0
 ===============
 base = 4, nextseqnum = 10
-Sender: L5 gives me (data: jjjjjjjjjjjjjjjjjjjjÿ)
-Accepting L5's request becasue nextseqnum (10) < base (4) + N (10)
+Sender: L5 gives me (data: jjjjjjjjjjjjjjjjjjjjþ)
+Accepting L5's request becasue nextseqnum (10) < base (4) + N (20)
 Sending to L3 sndpkt[10]
 Content: (seqnum: 10, acknum: NONE, payload: 'jjjjjjjjjjjjjjjjjjjj')
 base (4) != nextseqnum (10)
@@ -364,8 +364,8 @@ Sending to L3 (seqnum: 3, acknum: ACK, payload: '')
 EVENT time: 97.836769,  type: 1, fromlayer5  entity: 0
 ===============
 base = 4, nextseqnum = 11
-Sender: L5 gives me (data: kkkkkkkkkkkkkkkkkkkkÿ)
-Accepting L5's request becasue nextseqnum (11) < base (4) + N (10)
+Sender: L5 gives me (data: kkkkkkkkkkkkkkkkkkkkþ)
+Accepting L5's request becasue nextseqnum (11) < base (4) + N (20)
 Sending to L3 sndpkt[11]
 Content: (seqnum: 11, acknum: NONE, payload: 'kkkkkkkkkkkkkkkkkkkk')
 base (4) != nextseqnum (11)
@@ -434,8 +434,8 @@ Sending to L3 (seqnum: 3, acknum: ACK, payload: '')
 EVENT time: 112.919281,  type: 1, fromlayer5  entity: 0
 ===============
 base = 4, nextseqnum = 12
-Sender: L5 gives me (data: llllllllllllllllllllÿ)
-Accepting L5's request becasue nextseqnum (12) < base (4) + N (10)
+Sender: L5 gives me (data: llllllllllllllllllllþ)
+Accepting L5's request becasue nextseqnum (12) < base (4) + N (20)
 Sending to L3 sndpkt[12]
 Content: (seqnum: 12, acknum: NONE, payload: 'llllllllllllllllllll')
           TOLAYER3: packet being corrupted
@@ -466,8 +466,8 @@ Sending to L3 (seqnum: 3, acknum: ACK, payload: '')
 EVENT time: 115.482521,  type: 1, fromlayer5  entity: 0
 ===============
 base = 4, nextseqnum = 13
-Sender: L5 gives me (data: mmmmmmmmmmmmmmmmmmmmÿ)
-Accepting L5's request becasue nextseqnum (13) < base (4) + N (10)
+Sender: L5 gives me (data: mmmmmmmmmmmmmmmmmmmmþ)
+Accepting L5's request becasue nextseqnum (13) < base (4) + N (20)
 Sending to L3 sndpkt[13]
 Content: (seqnum: 13, acknum: NONE, payload: 'mmmmmmmmmmmmmmmmmmmm')
 base (4) != nextseqnum (13)
@@ -526,24 +526,29 @@ Sending to L3 (seqnum: 3, acknum: ACK, payload: '')
 EVENT time: 123.345718,  type: 1, fromlayer5  entity: 0
 ===============
 base = 4, nextseqnum = 14
-Sender: L5 gives me (data: nnnnnnnnnnnnnnnnnnnnÿ)
-Refusing L5's request because nextseqnum (14) >= base (4) + N (10)
+Sender: L5 gives me (data: nnnnnnnnnnnnnnnnnnnnþ)
+Accepting L5's request becasue nextseqnum (14) < base (4) + N (20)
+Sending to L3 sndpkt[14]
+Content: (seqnum: 14, acknum: NONE, payload: 'nnnnnnnnnnnnnnnnnnnn')
+          TOLAYER3: packet being lost
+base (4) != nextseqnum (14)
+nextseqnum++
 
 
 EVENT time: 125.057297,  type: 2, fromlayer3  entity: 0
 ===============
-base = 4, nextseqnum = 14
+base = 4, nextseqnum = 15
 Sender: L3 gives me (seqnum: 3, acknum: ACK, payload: 'Z')
 I refuse because the packet is corrupted
 
 
 EVENT time: 128.053680,  type: 2, fromlayer3  entity: 0
 ===============
-base = 4, nextseqnum = 14
+base = 4, nextseqnum = 15
 Sender: L3 gives me (seqnum: 3, acknum: ACK, payload: '')
 I accept because the packet is NOT corrupted
 Setting base to 4
-base(4) != nextseqnum(14)
+base(4) != nextseqnum(15)
 Starting timer with 20.00 time units
 Warning: attempt to start a timer that is already started
 
@@ -555,14 +560,19 @@ sndpkt = (seqnum: 3, acknum: ACK, payload: '')
 Receiver: L3 gives me (seqnum: 5, acknum: NONE, payload: 'eeeeeeeeeeeeeeeeeeee')
 Refusing because the packet has seqnum 5 while I am waiting for seqnum 4
 Sending to L3 (seqnum: 3, acknum: ACK, payload: '')
-          TOLAYER3: packet being lost
+          TOLAYER3: packet being corrupted
 
 
 EVENT time: 130.044296,  type: 1, fromlayer5  entity: 0
 ===============
-base = 4, nextseqnum = 14
-Sender: L5 gives me (data: ooooooooooooooooooooÿ)
-Refusing L5's request because nextseqnum (14) >= base (4) + N (10)
+base = 4, nextseqnum = 15
+Sender: L5 gives me (data: ooooooooooooooooooooþ)
+Accepting L5's request becasue nextseqnum (15) < base (4) + N (20)
+Sending to L3 sndpkt[15]
+Content: (seqnum: 15, acknum: NONE, payload: 'oooooooooooooooooooo')
+          TOLAYER3: packet being lost
+base (4) != nextseqnum (15)
+nextseqnum++
 
 
 EVENT time: 130.194656,  type: 2, fromlayer3  entity: 1
@@ -601,71 +611,56 @@ Refusing because the packet is corrupted.
 Sending to L3 (seqnum: 3, acknum: ACK, payload: '')
 
 
-EVENT time: 135.469711,  type: 1, fromlayer5  entity: 0
-===============
-base = 4, nextseqnum = 14
-Sender: L5 gives me (data: ppppppppppppppppppppÿ)
-Refusing L5's request because nextseqnum (14) >= base (4) + N (10)
-
-
 EVENT time: 135.622192,  type: 2, fromlayer3  entity: 0
 ===============
-base = 4, nextseqnum = 14
+base = 4, nextseqnum = 16
 Sender: L3 gives me (seqnum: 3, acknum: ACK, payload: '')
 I accept because the packet is NOT corrupted
 Setting base to 4
-base(4) != nextseqnum(14)
+base(4) != nextseqnum(16)
 Starting timer with 20.00 time units
 Warning: attempt to start a timer that is already started
 
 
 EVENT time: 138.705750,  type: 0, timerinterrupt   entity: 0
 ===============
-base = 4, nextseqnum = 14
+base = 4, nextseqnum = 16
 Sender: there is an timer interrupt
 Starting timer with 20.00 time units
 Sending to L3 packet sndpkt[4]
 Content: (seqnum: 4, acknum: NONE, payload: 'dddddddddddddddddddd')
-          TOLAYER3: packet being corrupted
 Sending to L3 packet sndpkt[5]
 Content: (seqnum: 5, acknum: NONE, payload: 'eeeeeeeeeeeeeeeeeeee')
 Sending to L3 packet sndpkt[6]
 Content: (seqnum: 6, acknum: NONE, payload: 'ffffffffffffffffffff')
+          TOLAYER3: packet being corrupted
 Sending to L3 packet sndpkt[7]
 Content: (seqnum: 7, acknum: NONE, payload: 'gggggggggggggggggggg')
           TOLAYER3: packet being corrupted
 Sending to L3 packet sndpkt[8]
 Content: (seqnum: 8, acknum: NONE, payload: 'hhhhhhhhhhhhhhhhhhhh	')
-          TOLAYER3: packet being corrupted
+          TOLAYER3: packet being lost
 Sending to L3 packet sndpkt[9]
 Content: (seqnum: 9, acknum: NONE, payload: 'iiiiiiiiiiiiiiiiiiii
 ')
           TOLAYER3: packet being lost
 Sending to L3 packet sndpkt[10]
 Content: (seqnum: 10, acknum: NONE, payload: 'jjjjjjjjjjjjjjjjjjjj')
-          TOLAYER3: packet being lost
 Sending to L3 packet sndpkt[11]
 Content: (seqnum: 11, acknum: NONE, payload: 'kkkkkkkkkkkkkkkkkkkk')
+          TOLAYER3: packet being lost
 Sending to L3 packet sndpkt[12]
 Content: (seqnum: 12, acknum: NONE, payload: 'llllllllllllllllllll')
-          TOLAYER3: packet being lost
-Sending to L3 packet sndpkt[13]
-Content: (seqnum: 13, acknum: NONE, payload: 'mmmmmmmmmmmmmmmmmmmm')
           TOLAYER3: packet being corrupted
-
-
-EVENT time: 138.833405,  type: 1, fromlayer5  entity: 0
-===============
-base = 4, nextseqnum = 14
-Sender: L5 gives me (data: qqqqqqqqqqqqqqqqqqqqÿ)
-Refusing L5's request because nextseqnum (14) >= base (4) + N (10)
-
-
-EVENT time: 139.754211,  type: 1, fromlayer5  entity: 0
-===============
-base = 4, nextseqnum = 14
-Sender: L5 gives me (data: rrrrrrrrrrrrrrrrrrrrÿ)
-Refusing L5's request because nextseqnum (14) >= base (4) + N (10)
+Sending to L3 packet sndpkt[13]
+Content: (seqnum: 13, acknum: NONE, payload: 'mmmmmmmmmmmmmmmmmmmm')
+          TOLAYER3: packet being lost
+Sending to L3 packet sndpkt[14]
+Content: (seqnum: 14, acknum: NONE, payload: 'nnnnnnnnnnnnnnnnnnnn')
+          TOLAYER3: packet being corrupted
+Sending to L3 packet sndpkt[15]
+Content: (seqnum: 15, acknum: NONE, payload: 'oooooooooooooooooooo')
+          TOLAYER3: packet being lost
 
 
 EVENT time: 140.273056,  type: 2, fromlayer3  entity: 1
@@ -675,49 +670,15 @@ sndpkt = (seqnum: 3, acknum: ACK, payload: '')
 Receiver: L3 gives me (seqnum: 10, acknum: NONE, payload: 'jjjjjjjjjjjjjjjjjjjj')
 Refusing because the packet has seqnum 10 while I am waiting for seqnum 4
 Sending to L3 (seqnum: 3, acknum: ACK, payload: '')
-          TOLAYER3: packet being lost
 
 
 EVENT time: 142.127579,  type: 2, fromlayer3  entity: 0
 ===============
-base = 4, nextseqnum = 14
+base = 4, nextseqnum = 16
 Sender: L3 gives me (seqnum: 3, acknum: ACK, payload: '')
 I accept because the packet is NOT corrupted
 Setting base to 4
-base(4) != nextseqnum(14)
-Starting timer with 20.00 time units
-Warning: attempt to start a timer that is already started
-
-
-EVENT time: 143.271912,  type: 2, fromlayer3  entity: 0
-===============
-base = 4, nextseqnum = 14
-Sender: L3 gives me (seqnum: 3, acknum: ACK, payload: '')
-I accept because the packet is NOT corrupted
-Setting base to 4
-base(4) != nextseqnum(14)
-Starting timer with 20.00 time units
-Warning: attempt to start a timer that is already started
-
-
-EVENT time: 145.690277,  type: 2, fromlayer3  entity: 0
-===============
-base = 4, nextseqnum = 14
-Sender: L3 gives me (seqnum: 3, acknum: ACK, payload: '')
-I accept because the packet is NOT corrupted
-Setting base to 4
-base(4) != nextseqnum(14)
-Starting timer with 20.00 time units
-Warning: attempt to start a timer that is already started
-
-
-EVENT time: 148.705124,  type: 2, fromlayer3  entity: 0
-===============
-base = 4, nextseqnum = 14
-Sender: L3 gives me (seqnum: 3, acknum: ACK, payload: '')
-I accept because the packet is NOT corrupted
-Setting base to 4
-base(4) != nextseqnum(14)
+base(4) != nextseqnum(16)
 Starting timer with 20.00 time units
 Warning: attempt to start a timer that is already started
 
@@ -729,7 +690,25 @@ sndpkt = (seqnum: 3, acknum: ACK, payload: '')
 Receiver: L3 gives me (seqnum: 11, acknum: NONE, payload: 'Zkkkkkkkkkkkkkkkkkkk')
 Refusing because the packet is corrupted.
 Sending to L3 (seqnum: 3, acknum: ACK, payload: '')
-          TOLAYER3: packet being lost
+
+
+EVENT time: 149.409058,  type: 1, fromlayer5  entity: 0
+===============
+base = 4, nextseqnum = 16
+Sender: L5 gives me (data: ppppppppppppppppppppþ)
+Accepting L5's request becasue nextseqnum (16) < base (4) + N (20)
+Sending to L3 sndpkt[16]
+Content: (seqnum: 16, acknum: NONE, payload: 'pppppppppppppppppppp')
+          TOLAYER3: packet being corrupted
+base (4) != nextseqnum (16)
+nextseqnum++
+
+
+EVENT time: 149.519958,  type: 2, fromlayer3  entity: 0
+===============
+base = 4, nextseqnum = 17
+Sender: L3 gives me (seqnum: 3, acknum: ACK, payload: 'Z')
+I refuse because the packet is corrupted
 
 
 EVENT time: 150.365829,  type: 2, fromlayer3  entity: 1
@@ -739,32 +718,28 @@ sndpkt = (seqnum: 3, acknum: ACK, payload: '')
 Receiver: L3 gives me (seqnum: 12, acknum: NACK, payload: 'llllllllllllllllllll')
 Refusing because the packet is corrupted.
 Sending to L3 (seqnum: 3, acknum: ACK, payload: '')
-          TOLAYER3: packet being lost
 
 
-EVENT time: 153.666977,  type: 1, fromlayer5  entity: 0
+EVENT time: 151.515518,  type: 1, fromlayer5  entity: 0
 ===============
-base = 4, nextseqnum = 14
-Sender: L5 gives me (data: ssssssssssssssssssssÿ)
-Refusing L5's request because nextseqnum (14) >= base (4) + N (10)
+base = 4, nextseqnum = 17
+Sender: L5 gives me (data: qqqqqqqqqqqqqqqqqqqqþ)
+Accepting L5's request becasue nextseqnum (17) < base (4) + N (20)
+Sending to L3 sndpkt[17]
+Content: (seqnum: 17, acknum: NONE, payload: 'qqqqqqqqqqqqqqqqqqqq')
+base (4) != nextseqnum (17)
+nextseqnum++
 
 
-EVENT time: 154.438171,  type: 2, fromlayer3  entity: 0
+EVENT time: 156.002548,  type: 2, fromlayer3  entity: 0
 ===============
-base = 4, nextseqnum = 14
+base = 4, nextseqnum = 18
 Sender: L3 gives me (seqnum: 3, acknum: ACK, payload: '')
 I accept because the packet is NOT corrupted
 Setting base to 4
-base(4) != nextseqnum(14)
+base(4) != nextseqnum(18)
 Starting timer with 20.00 time units
 Warning: attempt to start a timer that is already started
-
-
-EVENT time: 157.467255,  type: 1, fromlayer5  entity: 0
-===============
-base = 4, nextseqnum = 14
-Sender: L5 gives me (data: ttttttttttttttttttttÿ)
-Refusing L5's request because nextseqnum (14) >= base (4) + N (10)
 
 
 EVENT time: 158.311646,  type: 2, fromlayer3  entity: 1
@@ -778,12 +753,11 @@ Sending to L3 (seqnum: 3, acknum: ACK, payload: '')
 
 EVENT time: 158.705750,  type: 0, timerinterrupt   entity: 0
 ===============
-base = 4, nextseqnum = 14
+base = 4, nextseqnum = 18
 Sender: there is an timer interrupt
 Starting timer with 20.00 time units
 Sending to L3 packet sndpkt[4]
 Content: (seqnum: 4, acknum: NONE, payload: 'dddddddddddddddddddd')
-          TOLAYER3: packet being lost
 Sending to L3 packet sndpkt[5]
 Content: (seqnum: 5, acknum: NONE, payload: 'eeeeeeeeeeeeeeeeeeee')
 Sending to L3 packet sndpkt[6]
@@ -792,6 +766,7 @@ Sending to L3 packet sndpkt[7]
 Content: (seqnum: 7, acknum: NONE, payload: 'gggggggggggggggggggg')
 Sending to L3 packet sndpkt[8]
 Content: (seqnum: 8, acknum: NONE, payload: 'hhhhhhhhhhhhhhhhhhhh	')
+          TOLAYER3: packet being lost
 Sending to L3 packet sndpkt[9]
 Content: (seqnum: 9, acknum: NONE, payload: 'iiiiiiiiiiiiiiiiiiii
 ')
@@ -799,10 +774,41 @@ Sending to L3 packet sndpkt[10]
 Content: (seqnum: 10, acknum: NONE, payload: 'jjjjjjjjjjjjjjjjjjjj')
 Sending to L3 packet sndpkt[11]
 Content: (seqnum: 11, acknum: NONE, payload: 'kkkkkkkkkkkkkkkkkkkk')
+          TOLAYER3: packet being lost
 Sending to L3 packet sndpkt[12]
 Content: (seqnum: 12, acknum: NONE, payload: 'llllllllllllllllllll')
 Sending to L3 packet sndpkt[13]
-Content: (seqnum: 13, acknum: NONE, payload: 'mmmmmmmmmmmmmmmmmmmm')
+Content: (seqnum: 13, acknum: NONE, payload: 'mmmmmmmmmmmmmmmmmmmm')
+Sending to L3 packet sndpkt[14]
+Content: (seqnum: 14, acknum: NONE, payload: 'nnnnnnnnnnnnnnnnnnnn')
+Sending to L3 packet sndpkt[15]
+Content: (seqnum: 15, acknum: NONE, payload: 'oooooooooooooooooooo')
+Sending to L3 packet sndpkt[16]
+Content: (seqnum: 16, acknum: NONE, payload: 'pppppppppppppppppppp')
+Sending to L3 packet sndpkt[17]
+Content: (seqnum: 17, acknum: NONE, payload: 'qqqqqqqqqqqqqqqqqqqq')
+
+
+EVENT time: 159.315979,  type: 2, fromlayer3  entity: 0
+===============
+base = 4, nextseqnum = 18
+Sender: L3 gives me (seqnum: 3, acknum: ACK, payload: '')
+I accept because the packet is NOT corrupted
+Setting base to 4
+base(4) != nextseqnum(18)
+Starting timer with 20.00 time units
+Warning: attempt to start a timer that is already started
+
+
+EVENT time: 161.829636,  type: 2, fromlayer3  entity: 0
+===============
+base = 4, nextseqnum = 18
+Sender: L3 gives me (seqnum: 3, acknum: ACK, payload: '')
+I accept because the packet is NOT corrupted
+Setting base to 4
+base(4) != nextseqnum(18)
+Starting timer with 20.00 time units
+Warning: attempt to start a timer that is already started
 
 
 EVENT time: 163.038437,  type: 2, fromlayer3  entity: 1
@@ -813,29 +819,41 @@ Receiver: L3 gives me (seqnum: 4, acknum: NONE, payload: 'dddddddddddddddddddd'
 Accepting because the message is not corrupted and has expectedseqnum 4
 Delivering to L5 'dddddddddddddddddddd'
 Sending to L3 (seqnum: 4, acknum: ACK, payload: '')
+          TOLAYER3: packet being lost
 expectedseqnum++
 
 
-EVENT time: 164.146729,  type: 2, fromlayer3  entity: 0
+EVENT time: 163.692566,  type: 2, fromlayer3  entity: 0
 ===============
-base = 4, nextseqnum = 14
+base = 4, nextseqnum = 18
 Sender: L3 gives me (seqnum: 3, acknum: ACK, payload: '')
 I accept because the packet is NOT corrupted
 Setting base to 4
-base(4) != nextseqnum(14)
+base(4) != nextseqnum(18)
 Starting timer with 20.00 time units
 Warning: attempt to start a timer that is already started
 
 
-EVENT time: 166.049179,  type: 2, fromlayer3  entity: 0
+EVENT time: 166.989044,  type: 1, fromlayer5  entity: 0
 ===============
-base = 4, nextseqnum = 14
-Sender: L3 gives me (seqnum: 4, acknum: ACK, payload: '')
-I accept because the packet is NOT corrupted
-Setting base to 5
-base(5) != nextseqnum(14)
-Starting timer with 20.00 time units
-Warning: attempt to start a timer that is already started
+base = 4, nextseqnum = 18
+Sender: L5 gives me (data: rrrrrrrrrrrrrrrrrrrrþ)
+Accepting L5's request becasue nextseqnum (18) < base (4) + N (20)
+Sending to L3 sndpkt[18]
+Content: (seqnum: 18, acknum: NONE, payload: 'rrrrrrrrrrrrrrrrrrrr')
+base (4) != nextseqnum (18)
+nextseqnum++
+
+
+EVENT time: 167.200302,  type: 1, fromlayer5  entity: 0
+===============
+base = 4, nextseqnum = 19
+Sender: L5 gives me (data: ssssssssssssssssssssþ)
+Accepting L5's request becasue nextseqnum (19) < base (4) + N (20)
+Sending to L3 sndpkt[19]
+Content: (seqnum: 19, acknum: NONE, payload: 'ssssssssssssssssssss')
+base (4) != nextseqnum (19)
+nextseqnum++
 
 
 EVENT time: 167.938675,  type: 2, fromlayer3  entity: 1
@@ -849,17 +867,218 @@ Sending to L3 (seqnum: 5, acknum: ACK, payload: '')
 expectedseqnum++
 
 
-EVENT time: 168.940689,  type: 1, fromlayer5  entity: 0
+EVENT time: 172.406082,  type: 2, fromlayer3  entity: 0
 ===============
-base = 5, nextseqnum = 14
-Sender: L5 gives me (data: uuuuuuuuuuuuuuuuuuuuÿ)
-Accepting L5's request becasue nextseqnum (14) < base (5) + N (10)
-Sending to L3 sndpkt[14]
-Content: (seqnum: 14, acknum: NONE, payload: 'uuuuuuuuuuuuuuuuuuuu')
-base (5) != nextseqnum (14)
+base = 4, nextseqnum = 20
+Sender: L3 gives me (seqnum: 3, acknum: ACK, payload: '')
+I accept because the packet is NOT corrupted
+Setting base to 4
+base(4) != nextseqnum(20)
+Starting timer with 20.00 time units
+Warning: attempt to start a timer that is already started
+
+
+EVENT time: 174.533783,  type: 2, fromlayer3  entity: 0
+===============
+base = 4, nextseqnum = 20
+Sender: L3 gives me (seqnum: 3, acknum: ACK, payload: '')
+I accept because the packet is NOT corrupted
+Setting base to 4
+base(4) != nextseqnum(20)
+Starting timer with 20.00 time units
+Warning: attempt to start a timer that is already started
+
+
+EVENT time: 177.677383,  type: 2, fromlayer3  entity: 1
+===============
+expectedseqnum: 6
+sndpkt = (seqnum: 5, acknum: ACK, payload: '')
+Receiver: L3 gives me (seqnum: 6, acknum: NONE, payload: 'ffffffffffffffffffff')
+Accepting because the message is not corrupted and has expectedseqnum 6
+Delivering to L5 'ffffffffffffffffffff'
+Sending to L3 (seqnum: 6, acknum: ACK, payload: '')
+expectedseqnum++
+
+
+EVENT time: 178.705750,  type: 0, timerinterrupt   entity: 0
+===============
+base = 4, nextseqnum = 20
+Sender: there is an timer interrupt
+Starting timer with 20.00 time units
+Sending to L3 packet sndpkt[4]
+Content: (seqnum: 4, acknum: NONE, payload: 'dddddddddddddddddddd')
+          TOLAYER3: packet being lost
+Sending to L3 packet sndpkt[5]
+Content: (seqnum: 5, acknum: NONE, payload: 'eeeeeeeeeeeeeeeeeeee')
+Sending to L3 packet sndpkt[6]
+Content: (seqnum: 6, acknum: NONE, payload: 'ffffffffffffffffffff')
+Sending to L3 packet sndpkt[7]
+Content: (seqnum: 7, acknum: NONE, payload: 'gggggggggggggggggggg')
+Sending to L3 packet sndpkt[8]
+Content: (seqnum: 8, acknum: NONE, payload: 'hhhhhhhhhhhhhhhhhhhh	')
+          TOLAYER3: packet being lost
+Sending to L3 packet sndpkt[9]
+Content: (seqnum: 9, acknum: NONE, payload: 'iiiiiiiiiiiiiiiiiiii
+')
+Sending to L3 packet sndpkt[10]
+Content: (seqnum: 10, acknum: NONE, payload: 'jjjjjjjjjjjjjjjjjjjj')
+          TOLAYER3: packet being lost
+Sending to L3 packet sndpkt[11]
+Content: (seqnum: 11, acknum: NONE, payload: 'kkkkkkkkkkkkkkkkkkkk')
+          TOLAYER3: packet being lost
+Sending to L3 packet sndpkt[12]
+Content: (seqnum: 12, acknum: NONE, payload: 'llllllllllllllllllll')
+Sending to L3 packet sndpkt[13]
+Content: (seqnum: 13, acknum: NONE, payload: 'mmmmmmmmmmmmmmmmmmmm')
+Sending to L3 packet sndpkt[14]
+Content: (seqnum: 14, acknum: NONE, payload: 'nnnnnnnnnnnnnnnnnnnn')
+          TOLAYER3: packet being lost
+Sending to L3 packet sndpkt[15]
+Content: (seqnum: 15, acknum: NONE, payload: 'oooooooooooooooooooo')
+Sending to L3 packet sndpkt[16]
+Content: (seqnum: 16, acknum: NONE, payload: 'pppppppppppppppppppp')
+Sending to L3 packet sndpkt[17]
+Content: (seqnum: 17, acknum: NONE, payload: 'qqqqqqqqqqqqqqqqqqqq')
+Sending to L3 packet sndpkt[18]
+Content: (seqnum: 18, acknum: NONE, payload: 'rrrrrrrrrrrrrrrrrrrr')
+Sending to L3 packet sndpkt[19]
+Content: (seqnum: 19, acknum: NONE, payload: 'ssssssssssssssssssss')
+          TOLAYER3: packet being corrupted
+
+
+EVENT time: 179.703384,  type: 1, fromlayer5  entity: 0
+===============
+base = 4, nextseqnum = 20
+Sender: L5 gives me (data: ttttttttttttttttttttþ)
+Accepting L5's request becasue nextseqnum (20) < base (4) + N (20)
+Sending to L3 sndpkt[20]
+Content: (seqnum: 20, acknum: NONE, payload: 'tttttttttttttttttttt')
+base (4) != nextseqnum (20)
 nextseqnum++
 
 
-EVENT time: 170.955826,  type: 1, fromlayer5  entity: 0
- Simulator terminated at time 170.955826
+EVENT time: 179.951416,  type: 2, fromlayer3  entity: 1
+===============
+expectedseqnum: 7
+sndpkt = (seqnum: 6, acknum: ACK, payload: '')
+Receiver: L3 gives me (seqnum: 7, acknum: NONE, payload: 'gggggggggggggggggggg')
+Accepting because the message is not corrupted and has expectedseqnum 7
+Delivering to L5 'gggggggggggggggggggg'
+Sending to L3 (seqnum: 7, acknum: ACK, payload: '')
+expectedseqnum++
+
+
+EVENT time: 180.329315,  type: 2, fromlayer3  entity: 0
+===============
+base = 4, nextseqnum = 21
+Sender: L3 gives me (seqnum: 3, acknum: ACK, payload: '')
+I accept because the packet is NOT corrupted
+Setting base to 4
+base(4) != nextseqnum(21)
+Starting timer with 20.00 time units
+Warning: attempt to start a timer that is already started
+
+
+EVENT time: 181.547897,  type: 2, fromlayer3  entity: 1
+===============
+expectedseqnum: 8
+sndpkt = (seqnum: 7, acknum: ACK, payload: '')
+Receiver: L3 gives me (seqnum: 8, acknum: NONE, payload: 'hhhhhhhhhhhhhhhhhhhh')
+Accepting because the message is not corrupted and has expectedseqnum 8
+Delivering to L5 'hhhhhhhhhhhhhhhhhhhh'
+Sending to L3 (seqnum: 8, acknum: ACK, payload: '')
+expectedseqnum++
+
+
+EVENT time: 183.366272,  type: 2, fromlayer3  entity: 0
+===============
+base = 4, nextseqnum = 21
+Sender: L3 gives me (seqnum: 3, acknum: ACK, payload: '')
+I accept because the packet is NOT corrupted
+Setting base to 4
+base(4) != nextseqnum(21)
+Starting timer with 20.00 time units
+Warning: attempt to start a timer that is already started
+
+
+EVENT time: 184.413132,  type: 2, fromlayer3  entity: 0
+===============
+base = 4, nextseqnum = 21
+Sender: L3 gives me (seqnum: 5, acknum: ACK, payload: '')
+I accept because the packet is NOT corrupted
+Setting base to 6
+base(6) != nextseqnum(21)
+Starting timer with 20.00 time units
+Warning: attempt to start a timer that is already started
+
+
+EVENT time: 185.266113,  type: 2, fromlayer3  entity: 1
+===============
+expectedseqnum: 9
+sndpkt = (seqnum: 8, acknum: ACK, payload: '')
+Receiver: L3 gives me (seqnum: 9, acknum: NONE, payload: 'iiiiiiiiiiiiiiiiiiii')
+Accepting because the message is not corrupted and has expectedseqnum 9
+Delivering to L5 'iiiiiiiiiiiiiiiiiiii'
+Sending to L3 (seqnum: 9, acknum: ACK, payload: '')
+expectedseqnum++
+
+
+EVENT time: 190.137787,  type: 2, fromlayer3  entity: 1
+===============
+expectedseqnum: 10
+sndpkt = (seqnum: 9, acknum: ACK, payload: '')
+Receiver: L3 gives me (seqnum: 10, acknum: NONE, payload: 'jjjjjjjjjjjjjjjjjjjj')
+Accepting because the message is not corrupted and has expectedseqnum 10
+Delivering to L5 'jjjjjjjjjjjjjjjjjjjj'
+Sending to L3 (seqnum: 10, acknum: ACK, payload: '')
+expectedseqnum++
+
+
+EVENT time: 192.385422,  type: 2, fromlayer3  entity: 0
+===============
+base = 6, nextseqnum = 21
+Sender: L3 gives me (seqnum: 6, acknum: ACK, payload: '')
+I accept because the packet is NOT corrupted
+Setting base to 7
+base(7) != nextseqnum(21)
+Starting timer with 20.00 time units
+Warning: attempt to start a timer that is already started
+
+
+EVENT time: 195.024933,  type: 2, fromlayer3  entity: 0
+===============
+base = 7, nextseqnum = 21
+Sender: L3 gives me (seqnum: 7, acknum: ACK, payload: '')
+I accept because the packet is NOT corrupted
+Setting base to 8
+base(8) != nextseqnum(21)
+Starting timer with 20.00 time units
+Warning: attempt to start a timer that is already started
+
+
+EVENT time: 196.677017,  type: 2, fromlayer3  entity: 1
+===============
+expectedseqnum: 11
+sndpkt = (seqnum: 10, acknum: ACK, payload: '')
+Receiver: L3 gives me (seqnum: 11, acknum: NONE, payload: 'kkkkkkkkkkkkkkkkkkkk')
+Accepting because the message is not corrupted and has expectedseqnum 11
+Delivering to L5 'kkkkkkkkkkkkkkkkkkkk'
+Sending to L3 (seqnum: 11, acknum: ACK, payload: '')
+          TOLAYER3: packet being corrupted
+expectedseqnum++
+
+
+EVENT time: 197.326370,  type: 1, fromlayer5  entity: 0
+===============
+base = 8, nextseqnum = 21
+Sender: L5 gives me (data: uuuuuuuuuuuuuuuuuuuuþ)
+Accepting L5's request becasue nextseqnum (21) < base (8) + N (20)
+Sending to L3 sndpkt[21]
+Content: (seqnum: 21, acknum: NONE, payload: 'uuuuuuuuuuuuuuuuuuuu')
+base (8) != nextseqnum (21)
+nextseqnum++
+
+
+EVENT time: 198.705750,  type: 0, timerinterrupt   entity: 0
+ Simulator terminated at time 198.705750
  after sending 21 msgs from layer5
