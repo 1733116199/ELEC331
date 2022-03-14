@@ -39,7 +39,7 @@ struct pkt {
 
 #define ID_A 0
 #define ID_B 1
-#define A_TIMER ((double)80.0)
+#define A_TIMER ((double)20.0)
 
 #define NONE 0
 #define ACK 1
